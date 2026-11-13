@@ -37,3 +37,7 @@ Each sheet starts with routine checks, then moves into platform-specific trouble
 - Confirm syntax with CLI help and the linked vendor reference for your model and release. Commands in a sheet may come from different hardware families or require enabled features.
 - Start with read-only checks. For debug and capture, scope the input, use a bounded run where possible, and stop the diagnostic explicitly.
 - These are documentation-based references. Hardware and firmware coverage varies and the entries have not been exhaustively lab-tested.
+
+## Git et contribution
+
+Un guide de travail Git simple, incluant la protection des secrets et le retour arrière, est disponible dans [Git pour ingénieurs réseau](docs/git-for-network-engineers.md).
