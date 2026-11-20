@@ -2,7 +2,7 @@
 
 **A field reference for network engineers and NOC operators.**
 
-`458 commands` · `8 platforms` · `Switching / Routing / Firewalls`
+`463 commands` · `8 platforms` · `Switching / Routing / Firewalls`
 
 Each sheet starts with routine checks, then moves into platform-specific troubleshooting. Every command includes what to look for and any special handling.
 
@@ -10,7 +10,7 @@ Each sheet starts with routine checks, then moves into platform-specific trouble
 
 | Platform | Commands |
 | --- | ---: |
-| [Cisco IOS](cisco-ios/README.md) | 61 |
+| [Cisco IOS](cisco-ios/README.md) | 66 |
 | [Cisco IOS XE](cisco-ios-xe/README.md) | 61 |
 | [Cisco NX-OS](cisco-nx-os/README.md) | 61 |
 | [FortiGate / FortiOS](fortigate-fortios/README.md) | 54 |

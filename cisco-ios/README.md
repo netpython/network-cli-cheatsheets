@@ -1,6 +1,6 @@
 # Cisco IOS CLI Cheat Sheet
 
-**61 commands** · Classic IOS, with Catalyst switching and IOS router commands. Use privileged EXEC where required.
+**66 commands** · Classic IOS, with Catalyst switching and IOS router commands. Use privileged EXEC where required.
 
 [Command labels and usage notes](../README.md#command-labels) · [Catalyst 2960 IOS command references](https://www.cisco.com/c/en/us/support/switches/catalyst-2960-series-switches/products-command-reference-list.html)
 
@@ -88,3 +88,19 @@ Port flaps → inspect interface errors, then check optics or cabling and correl
 | `traceroute 198.51.100.20` | Probe the path toward a destination. [PROBE] |
 | `debug ip ospf adj` | Trace OSPF adjacency events during a bounded troubleshooting window. [DEBUG] |
 | `undebug all` | Stop all active IOS debugs. [CHANGE] |
+
+## DHCP server evidence
+
+Scope: IOS routers running the local DHCPv4 server; privileged EXEC. These queries do not change configuration or clear state. Confirm availability for your image; they do not interrogate an external DHCP server behind a relay.
+
+| Command example | What to inspect | Handling |
+| --- | --- | --- |
+| `show ip dhcp pool` | Pool totals and allocation; compare with the intended subnet. | Read only |
+| `show ip dhcp conflict` | Addresses withheld after conflict detection; establish the owner before remediation. | Read only; [SENSITIVE] |
+| `show ip dhcp database` | Persistence agent activity and errors, when configured. | Read only; [SENSITIVE] |
+| `show ip dhcp server statistics` | Message counters across two captures during one known client attempt. | Read only |
+| `show ip dhcp binding 192.0.2.50` | Lease and identity for one documentation address; substitute the client's address. | Read only; [SENSITIVE] |
+
+Use the existing `show ip dhcp binding` entry for the full table. A filtered lookup is useful during a single-client investigation. Empty output must be interpreted against server role and current allocation; it is not proof that the end host is offline. Keep timestamps with both snapshots and avoid clearing counters or bindings during evidence collection.
+
+Source: [Cisco IOS DHCP server guide](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipaddr_dhcp/configuration/12-4/dhcp-12-4-book/config-dhcp-server.html), verification section. Syntax reviewed against documentation; device testing pending.
